@@ -2,6 +2,7 @@ package com.project.jeremyg.multimoduledagger.di;
 
 import android.content.Context;
 
+import com.project.jeremyg.architecture.di.ArchitectureComponent;
 import com.project.jeremyg.architecture.di.RepoModule;
 import com.project.jeremyg.architecture.di.ViewModelModule;
 import com.project.jeremyg.core.di.BaseAppModule;
@@ -16,16 +17,16 @@ import dagger.android.AndroidInjectionModule;
 /**
  * Created by JeremyG on 25.07.2018.
  */
-
-@Singleton
+@ActivityScope
 @Component(
+        dependencies = {
+            ArchitectureComponent.class
+        },
             modules = {
-                    AndroidInjectionModule.class,
-                    ViewModelModule.class,
-                    RepoModule.class,
-                    BaseAppModule.class,
-                    ActivityModule.class,
-                    FragmentModule.class
+                AndroidInjectionModule.class,
+                BaseAppModule.class,
+                ActivityModule.class,
+                FragmentModule.class
             }
 )
 public interface AppComponent {

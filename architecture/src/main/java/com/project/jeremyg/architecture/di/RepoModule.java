@@ -2,6 +2,7 @@ package com.project.jeremyg.architecture.di;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.project.jeremyg.architecture.api.RestAPI;
 
 import dagger.Module;
 import dagger.Provides;
@@ -32,5 +33,10 @@ public class RepoModule {
                 .build();
 
         return retrofit;
+    }
+
+    @Provides
+    public RestAPI provideRestAPI(Retrofit restAdapter) {
+        return restAdapter.create(RestAPI.class);
     }
 }

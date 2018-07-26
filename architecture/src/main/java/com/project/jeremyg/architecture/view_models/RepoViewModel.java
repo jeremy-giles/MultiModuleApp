@@ -13,6 +13,8 @@ import com.project.jeremyg.architecture.repository.NetworkStatus;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 /**
  * Created by JeremyG on 25.07.2018.
  */
@@ -20,6 +22,11 @@ import java.util.List;
 public class RepoViewModel extends ViewModel {
 
     public GithubRepository githubRepository;
+
+    @Inject
+    public RepoViewModel(GithubRepository githubRepository){
+        this.githubRepository = githubRepository;
+    }
 
     public LiveData<List<Repo>> getAllRepo(LifecycleOwner owner) {
 
@@ -35,6 +42,7 @@ public class RepoViewModel extends ViewModel {
                 }
             }
         });
+        githubRepository.getAllRepo();
 
         return repos;
     }

@@ -49,6 +49,7 @@ public class GithubRepository {
         restAPI.listRepos("jeremy-giles").enqueue(new Callback<List<Repo>>() {
             @Override
             public void onResponse(Call<List<Repo>> call, Response<List<Repo>> response) {
+                Log.e(TAG, "onResponse: " + response.body());
                 database = response.body();
                 status.setValue(new NetworkStatus(NetworkStatus.StatusType.SUCCESS));
             }

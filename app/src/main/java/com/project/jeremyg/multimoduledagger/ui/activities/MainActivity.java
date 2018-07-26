@@ -24,9 +24,8 @@ public class MainActivity extends BaseListActivity implements HasSupportFragment
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
         AndroidInjection.inject(this);
+        super.onCreate(savedInstanceState);
 
         initListFragment();
     }

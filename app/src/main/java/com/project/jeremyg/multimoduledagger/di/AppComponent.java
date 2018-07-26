@@ -1,29 +1,40 @@
 package com.project.jeremyg.multimoduledagger.di;
 
-import com.project.jeremyg.architecture.di.ViewModelComponent;
-import com.project.jeremyg.core.di.BaseAppComponent;
-import com.project.jeremyg.multimoduledagger.App;
+import android.content.Context;
 
-import javax.inject.Singleton;
+import com.project.jeremyg.architecture.di.RepoModule;
+import com.project.jeremyg.architecture.di.ViewModelBuilder;
+import com.project.jeremyg.core.BaseApp;
+import com.project.jeremyg.core.di.BaseAppModule;
 
+import dagger.BindsInstance;
 import dagger.Component;
+import dagger.android.support.AndroidSupportInjectionModule;
 
 /**
  * Created by JeremyG on 25.07.2018.
  */
 
-@Singleton
 @Component(
-        dependencies = {
-                BaseAppComponent.class,
-                ViewModelComponent.class
-        },
-        modules = {
-                ActivityModule.class,
-                FragmentModule.class
-        })
+            modules = {
+                    AndroidSupportInjectionModule.class,
+                    ViewModelBuilder.class,
+                    RepoModule.class,
+                    BaseAppModule.class,
+                    ActivityModule.class,
+                    FragmentModule.class
+            }
+)
 public interface AppComponent {
 
-        void inject(App app);
+    @Component.Builder
+    interface Builder {
+        @BindsInstance
+        Builder baseContext(Context baseContext);
+
+        AppComponent build();
+    }
+
+    void inject(BaseApp baseApp);
 
 }

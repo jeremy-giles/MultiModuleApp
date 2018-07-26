@@ -2,8 +2,6 @@ package com.project.jeremyg.core.di;
 
 import android.content.Context;
 
-import javax.inject.Named;
-
 import dagger.Module;
 import dagger.Provides;
 
@@ -14,19 +12,12 @@ import dagger.Provides;
 @Module
 public class BaseAppModule {
 
-    @Named("baseAppContext")
-    public Context baseAppContext;
-
-    public BaseAppModule(Context context) {
-        this.baseAppContext = context;
-    }
-
     /*
      * CONTEXT
      */
     @Provides
-    public Context provideContext() {
-        return baseAppContext;
+    public Context provideContext(Context baseContext) {
+        return baseContext;
     }
 
 }

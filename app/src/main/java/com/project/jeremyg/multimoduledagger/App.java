@@ -2,12 +2,7 @@ package com.project.jeremyg.multimoduledagger;
 
 import android.app.Activity;
 
-import com.project.jeremyg.architecture.di.DaggerViewModelComponent;
-import com.project.jeremyg.architecture.di.ViewModelComponent;
 import com.project.jeremyg.core.BaseApp;
-import com.project.jeremyg.core.di.BaseAppComponent;
-import com.project.jeremyg.core.di.BaseAppModule;
-import com.project.jeremyg.core.di.DaggerBaseAppComponent;
 import com.project.jeremyg.multimoduledagger.di.DaggerAppComponent;
 
 import javax.inject.Inject;
@@ -28,7 +23,7 @@ public class App extends BaseApp implements HasActivityInjector {
     @Override
     public void onCreate() {
         super.onCreate();
-       this.initDagger();
+        this.initDagger();
     }
 
     @Override
@@ -37,14 +32,6 @@ public class App extends BaseApp implements HasActivityInjector {
     }
 
     private void initDagger() {
-        BaseAppComponent baseAppComponent = DaggerBaseAppComponent.builder()
-                .baseAppModule(new BaseAppModule(baseApplicationContext)).build();
-
-        ViewModelComponent viewModelComponent = DaggerViewModelComponent.builder().build();
-
-        DaggerAppComponent.builder()
-                .baseAppComponent(baseAppComponent)
-                .viewModelComponent(viewModelComponent)
-                .build().inject(this);
+        DaggerAppComponent.builder().baseContext(baseApplicationContext).build().inject(this);
     }
 }

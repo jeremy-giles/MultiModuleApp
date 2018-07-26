@@ -1,13 +1,10 @@
 package com.project.jeremyg.architecture.view_models;
 
-import android.app.Application;
-import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModel;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.project.jeremyg.architecture.entities.Repo;
@@ -15,8 +12,6 @@ import com.project.jeremyg.architecture.repository.GithubRepository;
 import com.project.jeremyg.architecture.repository.NetworkStatus;
 
 import java.util.List;
-
-import javax.inject.Inject;
 
 /**
  * Created by JeremyG on 25.07.2018.

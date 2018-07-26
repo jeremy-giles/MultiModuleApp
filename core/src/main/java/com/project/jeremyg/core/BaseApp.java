@@ -7,7 +7,7 @@ import android.content.Context;
  * Created by JeremyG on 25.07.2018.
  */
 
-public class BaseApp extends Application {
+public abstract class BaseApp extends Application {
 
     public Context baseApplicationContext;
 

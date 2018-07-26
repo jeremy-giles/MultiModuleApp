@@ -8,6 +8,7 @@ import com.project.jeremyg.core.BaseApp;
 import com.project.jeremyg.core.di.BaseAppComponent;
 import com.project.jeremyg.core.di.BaseAppModule;
 import com.project.jeremyg.core.di.DaggerBaseAppComponent;
+import com.project.jeremyg.multimoduledagger.di.DaggerAppComponent;
 
 import javax.inject.Inject;
 
@@ -36,13 +37,13 @@ public class App extends BaseApp implements HasActivityInjector {
     }
 
     private void initDagger() {
-        BaseAppComponent appComponent = DaggerBaseAppComponent.builder()
+        BaseAppComponent baseAppComponent = DaggerBaseAppComponent.builder()
                 .baseAppModule(new BaseAppModule(baseApplicationContext)).build();
 
         ViewModelComponent viewModelComponent = DaggerViewModelComponent.builder().build();
 
         DaggerAppComponent.builder()
-                .baseAppComponent(appComponent)
+                .baseAppComponent(baseAppComponent)
                 .viewModelComponent(viewModelComponent)
                 .build().inject(this);
     }

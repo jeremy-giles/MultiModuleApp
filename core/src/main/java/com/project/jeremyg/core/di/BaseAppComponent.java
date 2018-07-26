@@ -1,5 +1,7 @@
 package com.project.jeremyg.core.di;
 
+import com.project.jeremyg.core.BaseApp;
+
 import dagger.Component;
 
 /**
@@ -11,5 +13,7 @@ import dagger.Component;
                 BaseAppModule.class
 })
 public interface BaseAppComponent {
+
+   // void inject(BaseApp baseApp);
 
 }

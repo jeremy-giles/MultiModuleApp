@@ -16,7 +16,6 @@ import dagger.MapKey;
 
 @Documented
 @MapKey
-@Target({ElementType.METHOD, ElementType.PARAMETER, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ViewModelKey {
     Class<? extends ViewModel> value();

@@ -3,22 +3,25 @@ package com.project.jeremyg.multimoduledagger.di;
 import android.content.Context;
 
 import com.project.jeremyg.architecture.di.RepoModule;
-import com.project.jeremyg.architecture.di.ViewModelBuilder;
-import com.project.jeremyg.core.BaseApp;
+import com.project.jeremyg.architecture.di.ViewModelModule;
 import com.project.jeremyg.core.di.BaseAppModule;
+import com.project.jeremyg.multimoduledagger.App;
+
+import javax.inject.Singleton;
 
 import dagger.BindsInstance;
 import dagger.Component;
-import dagger.android.support.AndroidSupportInjectionModule;
+import dagger.android.AndroidInjectionModule;
 
 /**
  * Created by JeremyG on 25.07.2018.
  */
 
+@Singleton
 @Component(
             modules = {
-                    AndroidSupportInjectionModule.class,
-                    ViewModelBuilder.class,
+                    AndroidInjectionModule.class,
+                    ViewModelModule.class,
                     RepoModule.class,
                     BaseAppModule.class,
                     ActivityModule.class,
@@ -35,6 +38,6 @@ public interface AppComponent {
         AppComponent build();
     }
 
-    void inject(BaseApp baseApp);
+    void inject(App App);
 
 }

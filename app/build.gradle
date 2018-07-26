@@ -42,4 +42,11 @@ dependencies {
     implementation 'com.google.dagger:dagger-android-support:2.13'
     annotationProcessor 'com.google.dagger:dagger-android-processor:2.13'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.13'
+
+    // GSON
+    implementation 'com.google.code.gson:gson:2.8.2'
+
+    // RETROFIT
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.2.0'
 }

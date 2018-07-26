@@ -23,7 +23,7 @@ public class MyRepoRecyclerViewAdapter extends RecyclerView.Adapter<MyRepoRecycl
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_repo_list, parent, false);
+                .inflate(R.layout.fragment_repo, parent, false);
         return new ViewHolder(view);
     }
 

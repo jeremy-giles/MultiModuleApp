@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,6 +20,7 @@ import retrofit2.Response;
  * Created by JeremyG on 25.07.2018.
  */
 
+@Singleton
 public class GithubRepository {
 
     private static final String TAG = GithubRepository.class.getSimpleName();
@@ -49,7 +51,6 @@ public class GithubRepository {
         restAPI.listRepos("jeremy-giles").enqueue(new Callback<List<Repo>>() {
             @Override
             public void onResponse(Call<List<Repo>> call, Response<List<Repo>> response) {
-                Log.e(TAG, "onResponse: " + response.body());
                 database = response.body();
                 status.setValue(new NetworkStatus(NetworkStatus.StatusType.SUCCESS));
             }
@@ -57,7 +58,6 @@ public class GithubRepository {
             @Override
             public void onFailure(Call<List<Repo>> call, Throwable t) {
                 status.setValue(new NetworkStatus(NetworkStatus.StatusType.FAILED));
-                Log.e(TAG, "getAllRepo reauest failed", t);
             }
         });
     }

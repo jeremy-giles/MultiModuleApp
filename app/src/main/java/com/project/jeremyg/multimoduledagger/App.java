@@ -2,14 +2,12 @@ package com.project.jeremyg.multimoduledagger;
 
 import android.app.Activity;
 
-import com.project.jeremyg.architecture.di.ArchitectureComponent;
-import com.project.jeremyg.architecture.di.DaggerArchitectureComponent;
 import com.project.jeremyg.core.BaseApp;
 import com.project.jeremyg.multimoduledagger.di.DaggerAppComponent;
+import com.project.jeremyg.multimoduledagger.ui.manager.RepoManager;
 
 import javax.inject.Inject;
 
-import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
 
@@ -22,12 +20,12 @@ public class App extends BaseApp implements HasActivityInjector {
     @Inject
     DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
 
-    public ArchitectureComponent architectureComponent;
-
     @Override
     public void onCreate() {
         super.onCreate();
         this.initDagger();
+
+        useRepoManager();
     }
 
     @Override
@@ -37,11 +35,12 @@ public class App extends BaseApp implements HasActivityInjector {
 
     private void initDagger() {
 
-        architectureComponent = DaggerArchitectureComponent.builder().build();
-
         DaggerAppComponent.builder()
                 .baseContext(baseApplicationContext)
-                .architectureComponent(architectureComponent)
                 .build().inject(this);
+    }
+
+    private void useRepoManager() {
+        new RepoManager().useGithubRepository();
     }
 }

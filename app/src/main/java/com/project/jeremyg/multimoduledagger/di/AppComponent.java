@@ -5,7 +5,8 @@ import android.content.Context;
 import com.project.jeremyg.architecture.di.RepoModule;
 import com.project.jeremyg.architecture.di.ViewModelModule;
 import com.project.jeremyg.core.di.BaseAppModule;
-import com.project.jeremyg.multimoduledagger.App;
+import com.project.jeremyg.multimoduledagger.MyApp;
+import com.project.jeremyg.multimoduledagger.ui.manager.RepoManager;
 
 import javax.inject.Singleton;
 
@@ -25,7 +26,8 @@ import dagger.android.AndroidInjectionModule;
                     RepoModule.class,
                     BaseAppModule.class,
                     ActivityModule.class,
-                    FragmentModule.class
+                    FragmentModule.class,
+                    AppModule.class
             }
 )
 public interface AppComponent {
@@ -38,6 +40,8 @@ public interface AppComponent {
         AppComponent build();
     }
 
-    void inject(App App);
+    void inject(MyApp MyApp);
+
+    void inject(RepoManager repoManager);
 
 }

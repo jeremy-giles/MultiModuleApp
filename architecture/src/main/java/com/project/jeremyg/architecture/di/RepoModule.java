@@ -4,6 +4,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.project.jeremyg.architecture.api.RestAPI;
 
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;
@@ -39,4 +41,5 @@ public class RepoModule {
     public RestAPI provideRestAPI(Retrofit restAdapter) {
         return restAdapter.create(RestAPI.class);
     }
+
 }

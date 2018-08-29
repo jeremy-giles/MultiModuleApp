@@ -1,6 +1,8 @@
 package com.project.jeremyg.multimoduledagger.ui.manager;
 
 import com.project.jeremyg.architecture.repository.GithubRepository;
+import com.project.jeremyg.multimoduledagger.MyApp;
+
 
 import javax.inject.Inject;
 
@@ -12,6 +14,10 @@ public class RepoManager {
 
     @Inject
     GithubRepository githubRepository;
+
+    public RepoManager() {
+        MyApp.getMyAppInstance().component.inject(this);
+    }
 
     public void useGithubRepository() {
         githubRepository.getAllRepo();

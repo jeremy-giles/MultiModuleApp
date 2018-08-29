@@ -28,6 +28,7 @@ public class MainActivity extends BaseListActivity implements HasSupportFragment
         super.onCreate(savedInstanceState);
 
         initListFragment();
+
     }
 
     public void initListFragment() {
